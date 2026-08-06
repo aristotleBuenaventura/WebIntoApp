@@ -7,7 +7,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.app88dagaaffiliates.app"
+        applicationId = "com.joywin88affiliates.app"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
