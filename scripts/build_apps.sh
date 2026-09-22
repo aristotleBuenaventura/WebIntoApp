@@ -114,7 +114,7 @@ EOF
 APPS=(
   "MCW Affiliates|https://facai777.net/page/affiliate/login.jsp|M1.png"
   "Mega Cricket World Affiliates|https://cricbd88.club/page/affiliate/login.jsp|M2.png"
-  "Banglabet Affiliates|https://bbetbd88.com/page/affiliate/login.jsp|B1.png"
+  "Banglabet Affiliates|https://bbtlink.co/affsignup|B1.png"
   "Bengalbet Affiliates|https://bgb88.club/page/affiliate/login.jsp|B2.png"
   "Deshislots Affiliates|https://deshislots88.net/page/affiliate/login.jsp|DESHISLOTS.png"
   "Banglawin Affiliates|https://banglawin88.net/page/affiliate/login.jsp|B4.png"

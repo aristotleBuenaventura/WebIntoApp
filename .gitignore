@@ -13,3 +13,11 @@
 *.aab
 *.keystore
 *.jks
+
+# Flutter desktop UI
+/desktop/.dart_tool/
+/desktop/.flutter-plugins-dependencies
+/desktop/build/
+/desktop/.packages
+/desktop/macos/Flutter/ephemeral/
+/desktop/windows/flutter/ephemeral/

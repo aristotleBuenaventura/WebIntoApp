@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="splash_background">#0D2562</color>
-    <color name="splash_background_deep">#0A1D4C</color>
-    <color name="splash_background_soft">#394C7E</color>
+    <color name="splash_background">#007F60</color>
+    <color name="splash_background_deep">#00634B</color>
+    <color name="splash_background_soft">#2E967D</color>
     <color name="progress_accent">#FFFFFF</color>
 </resources>
