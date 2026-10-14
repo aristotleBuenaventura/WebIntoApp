@@ -7,7 +7,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.banglabetaffiliates.app"
+        applicationId = "com.mcwaffiliates.app"
         minSdk = 24
         targetSdk = 35
         versionCode = 1

@@ -22,8 +22,10 @@ class _GeneratorScreenState extends State<GeneratorScreen> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _urlController = TextEditingController();
+  final _logScroll = ScrollController();
   String? _selectedLogo;
   String? _customIconPath;
+  int _lastLogCount = 0;
 
   @override
   void initState() {
@@ -37,6 +39,7 @@ class _GeneratorScreenState extends State<GeneratorScreen> {
   void dispose() {
     _nameController.dispose();
     _urlController.dispose();
+    _logScroll.dispose();
     super.dispose();
   }
 
@@ -110,6 +113,13 @@ class _GeneratorScreenState extends State<GeneratorScreen> {
   Widget build(BuildContext context) {
     final provider = context.watch<AppProvider>();
     final theme = Theme.of(context);
+    if (provider.logLines.length != _lastLogCount) {
+      _lastLogCount = provider.logLines.length;
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!_logScroll.hasClients) return;
+        _logScroll.jumpTo(_logScroll.position.maxScrollExtent);
+      });
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -384,6 +394,7 @@ class _GeneratorScreenState extends State<GeneratorScreen> {
                               ),
                               child: SelectionArea(
                                 child: ListView.builder(
+                                  controller: _logScroll,
                                   itemCount: provider.logLines.length,
                                   itemBuilder: (context, index) {
                                     return Text(

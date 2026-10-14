@@ -9,7 +9,9 @@ import '../services/apk_builder_service.dart';
 class AppProvider extends ChangeNotifier {
   AppProvider({ApkBuilderService? builder})
       : _builder = builder ?? ApkBuilderService() {
-    final home = Platform.environment['HOME'] ?? '';
+    final home = Platform.environment['HOME'] ??
+        Platform.environment['USERPROFILE'] ??
+        '';
     logosDir = p.join(home, 'Downloads', 'BDT_LOGOS');
     projectRoot = ApkBuilderService.resolveProjectRoot();
     refreshLogos();
@@ -66,12 +68,24 @@ class AppProvider extends ChangeNotifier {
     logLines.clear();
     notifyListeners();
 
-    final result = await _builder.build(
-      appName: appName,
-      url: url,
-      iconPath: iconPath,
-      onLog: _appendLog,
-    );
+    late final BuildResult result;
+    try {
+      result = await _builder.build(
+        appName: appName,
+        url: url,
+        iconPath: iconPath,
+        onLog: _appendLog,
+      );
+    } catch (error) {
+      _appendLog('ERROR: $error');
+      result = BuildResult(
+        appName: appName,
+        url: url,
+        status: BuildStatus.failed,
+        message: error.toString(),
+        timestamp: DateTime.now(),
+      );
+    }
 
     results.insert(0, result);
     isBuilding = false;
